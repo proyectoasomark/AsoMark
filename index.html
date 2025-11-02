@@ -20,20 +20,20 @@
       </div>
 
       <nav class="nav-main" aria-label="Menú principal">
-        <button class="nav-btn" data-target="inicio">Inicio</button>
-        <button class="nav-btn" data-target="services">Servicios</button>
-        <button class="nav-btn" data-target="results">Resultados</button>
+        <button type="button" class="nav-btn" data-target="inicio">Inicio</button>
+        <button type="button" class="nav-btn" data-target="services">Servicios</button>
+        <button type="button" class="nav-btn" data-target="results">Resultados</button>
       </nav>
 
       <div class="header-actions">
         <!-- icono minimalista (línea) que responde al color corporativo -->
-        <button id="themeToggle" class="icon-btn" title="Cambiar tema" aria-label="Cambiar tema">
+        <button id="themeToggle" class="icon-btn" title="Cambiar tema" aria-label="Cambiar tema" type="button">
           <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
           </svg>
         </button>
 
-        <button id="loginBtn" class="ghost-btn" title="Iniciar sesión (simulado)">Iniciar sesión</button>
+        <button id="loginBtn" class="ghost-btn" title="Iniciar sesión (simulado)" type="button">Iniciar sesión</button>
       </div>
     </header>
 
@@ -52,8 +52,8 @@
               <p class="lead">ASOMARK impulsa el crecimiento de las empresas urabaenses mediante asesorías de marketing diseñadas para optimizar estrategias, fortalecer la presencia digital y potenciar el desarrollo de negocios locales.</p>
 
               <div class="hero-actions">
-                <button class="primary-btn" data-target="services">Ver servicios</button>
-                <button class="ghost-btn" id="btnContactFromHero">Contáctenos</button>
+                <button type="button" class="primary-btn" data-target="services">Ver servicios</button>
+                <button type="button" class="ghost-btn" id="btnContactFromHero">Contáctenos</button>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
                 <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
               </div>
               <div class="plan-actions">
-                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','basic')">Calcular</button>
+                <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','basic')">Calcular</button>
               </div>
             </article>
 
@@ -108,7 +108,7 @@
                 <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
               </div>
               <div class="plan-actions">
-                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','premium')">Calcular</button>
+                <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','premium')">Calcular</button>
               </div>
             </article>
 
@@ -127,7 +127,7 @@
                 <div class="item"><span class="tick">✅</span> Acceso a estrategias avanzadas en tiempo real</div>
               </div>
               <div class="plan-actions">
-                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','vip')">Calcular</button>
+                <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','vip')">Calcular</button>
               </div>
             </article>
           </div>
@@ -139,7 +139,7 @@
               <p class="muted">Ofrecemos capacitaciones con tarifas por trabajador. Use la calculadora para obtener el precio según el número de participantes.</p>
             </div>
             <div class="cap-actions">
-              <button class="ghost-btn" onclick="openCalculatorFor('capacitacion')">Calcular</button>
+              <button type="button" class="ghost-btn" onclick="openCalculatorFor('capacitacion')">Calcular</button>
             </div>
           </div>
         </div>

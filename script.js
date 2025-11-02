@@ -1,6 +1,23 @@
 // script.js - comportamiento ASOMARK
 document.addEventListener('DOMContentLoaded', ()=> {
 
+  /* THEME ELEMENTS (obtener referencia antes de usarla) */
+  const themeToggle = document.getElementById('themeToggle');
+
+  function updateThemeIcon(){
+    const icon = document.getElementById('themeIcon');
+    const isLight = document.body.classList.contains('light-theme');
+    // proteger si themeToggle no existe
+    if(themeToggle){
+      themeToggle.title = isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+      themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+    }
+    // (opcional) actualizar el color o atributo del icono si hace falta
+    if(icon) {
+      // ejemplo: cambiar stroke por clase (si necesitas)
+    }
+  }
+
   /* THEME INIT */
   (function initTheme(){
     const saved = localStorage.getItem('asomark_theme');
@@ -9,20 +26,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
     updateThemeIcon();
   })();
 
-  const themeToggle = document.getElementById('themeToggle');
-  function updateThemeIcon(){
-    const icon = document.getElementById('themeIcon');
-    const isLight = document.body.classList.contains('light-theme');
-    // change stroke color via parent button color (CSS sets color)
-    themeToggle.title = isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
-    themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+  if(themeToggle){
+    themeToggle.addEventListener('click', ()=>{
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('asomark_theme', isLight ? 'light' : 'dark');
+      updateThemeIcon();
+    });
   }
-  themeToggle.addEventListener('click', ()=>{
-    document.body.classList.toggle('light-theme');
-    const isLight = document.body.classList.contains('light-theme');
-    localStorage.setItem('asomark_theme', isLight ? 'light' : 'dark');
-    updateThemeIcon();
-  });
 
   /* NAVIGATION (app-like screens) */
   function showScreen(id){
@@ -39,7 +50,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
   document.querySelectorAll('.hero-actions [data-target]').forEach(b=>{
     b.addEventListener('click', ()=> showScreen(b.dataset.target));
   });
-  document.getElementById('btnContactFromHero').addEventListener('click', ()=> showScreen('contact'));
+  const btnContactFromHero = document.getElementById('btnContactFromHero');
+  if(btnContactFromHero) btnContactFromHero.addEventListener('click', ()=> showScreen('contact'));
 
   /* MODALS */
   const legalModal = document.getElementById('legalModal');
@@ -81,7 +93,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
   window.closeCalculator = function(){ closeModal(calcModal); document.getElementById('calcResult').innerHTML = ''; };
 
   // login modal
-  document.getElementById('loginBtn').addEventListener('click', ()=> openModal(loginModal));
+  const loginBtn = document.getElementById('loginBtn');
+  if(loginBtn) loginBtn.addEventListener('click', ()=> openModal(loginModal));
   window.closeLogin = function(){ closeModal(loginModal); };
 
   // close by clicking outside
@@ -142,7 +155,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
   // planBlock visibility
   const serviceTypeEl = document.getElementById('serviceType');
-  serviceTypeEl.addEventListener('change', updatePlanVisibility);
+  if(serviceTypeEl) serviceTypeEl.addEventListener('change', updatePlanVisibility);
   function updatePlanVisibility(){
     const v = document.getElementById('serviceType').value;
     document.getElementById('planBlock').style.display = (v === 'asesoria') ? 'block' : 'none';
