@@ -104,3 +104,26 @@ body{
   .logo-big{width:220px}
   .lead{max-width:100%}
 }
+/* ICONOS MONOCROMOS (gris claro) para checklist */
+.checklist .item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:var(--muted);      /* texto en gris claro */
+  margin-bottom:6px;
+}
+.tick-icon{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  display:block;
+  color:var(--muted);      /* el SVG usa currentColor => queda en gris */
+  margin-top:3px;
+}
+.item-text{
+  line-height:1.35;
+  color:var(--muted);
+  font-size:14px;
+}
+/* ocultar el .tick (emoji) si existe */
+.tick{ display:none !important; }

@@ -12,7 +12,8 @@
     <!-- HEADER -->
     <header class="app-header">
       <div class="brand" title="ASOMARK">
-        <img id="logoTop" src="./logo-asomark.png" alt="Logo ASOMARK" />
+        <!-- Intentamos .jpg primero; si falla usaremos .png como fallback -->
+        <img id="logoTop" src="./logo-asomark.jpg" alt="Logo ASOMARK" onerror="this.onerror=null;this.src='./logo-asomark.png'" />
         <div class="brand-text">
           <div class="brand-title">ASOMARK</div>
           <div class="brand-sub">Asesorías de marketing — Urabá</div>
@@ -26,7 +27,6 @@
       </nav>
 
       <div class="header-actions">
-        <!-- icono minimalista (línea) que responde al color corporativo -->
         <button id="themeToggle" class="icon-btn" title="Cambiar tema" aria-label="Cambiar tema" type="button">
           <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
@@ -44,7 +44,7 @@
         <div class="screen-inner">
           <div class="hero">
             <div class="hero-left">
-              <img class="logo-big" src="./logo-asomark.png" alt="Logo ASOMARK" />
+              <img class="logo-big" src="./logo-asomark.jpg" alt="Logo ASOMARK" onerror="this.onerror=null;this.src='./logo-asomark.png'" />
             </div>
             <div class="hero-right">
               <h1 class="site-title">ASOMARK</h1>
@@ -72,7 +72,6 @@
           <h2>Servicios</h2>
           <p class="muted">Planes de asesoría en marketing y capacitaciones. Los precios no se muestran en las tarjetas; use la calculadora para obtener el valor.</p>
 
-          <!-- Planes de asesoría (alineadas horizontalmente) -->
           <div class="plans-row" role="list">
             <!-- Plan Básico -->
             <article class="plan-card card" role="listitem" aria-labelledby="plan-basic">
@@ -81,12 +80,42 @@
                 <div class="plan-sub muted">Diagnóstico, recomendaciones y capacitación inicial.</div>
               </div>
               <div class="checklist">
-                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
-                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
-                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
-                <div class="item"><span class="tick">❌</span> Seguimiento de análisis de métricas</div>
-                <div class="item"><span class="tick">❌</span> Estrategias avanzadas</div>
-                <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
+                <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Diagnóstico</div>
+                <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div>Recomendaciones iniciales para la mejora de procesos</div>
+               <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div>1 sesión de capacitación de 90 minutos</div>
+                <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7A1 1 0 105.7 7.1L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/>
+  </svg>
+  <div class="item-text">Seguimiento de análisis de métricas</div>
+</div>Seguimiento de análisis de métricas</div>
+                <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7A1 1 0 105.7 7.1L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/>
+  </svg>
+  <div class="item-text">Seguimiento de análisis de métricas</div>
+</div>Estrategias avanzadas</div>
+                <div class="item">
+  <svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7A1 1 0 105.7 7.1L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/>
+  </svg>
+  <div class="item-text">Seguimiento de análisis de métricas</div>
+</div>Asesoría sobre resultados de gráficos evaluados</div>
               </div>
               <div class="plan-actions">
                 <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','basic')">Calcular</button>
@@ -100,12 +129,36 @@
                 <div class="plan-sub muted">Diagnóstico, métricas y estrategia avanzada.</div>
               </div>
               <div class="checklist">
-                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
-                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
-                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
-                <div class="item"><span class="tick">✅</span> 2 sesiones de seguimiento de análisis de métricas</div>
-                <div class="item"><span class="tick">✅</span> Creación de dos estrategias</div>
-                <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
+               <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div>Diagnóstico</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Recomendaciones iniciales para la mejora de procesos</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> 1 sesión de capacitación de 90 minutos</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> 2 sesiones de seguimiento de análisis de métricas</div>
+               <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Creación de dos estrategias</div>
+              <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7A1 1 0 105.7 7.1L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/>
+  </svg>
+                <div class="item-text">Seguimiento de análisis de métricas</div>
+</div> Asesoría sobre resultados de gráficos evaluados</div>
               </div>
               <div class="plan-actions">
                 <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','premium')">Calcular</button>
@@ -119,12 +172,36 @@
                 <div class="plan-sub muted">Acompañamiento intensivo y asesorías sobre métricas.</div>
               </div>
               <div class="checklist">
-                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
-                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
-                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
-                <div class="item"><span class="tick">✅</span> 2 sesiones de seguimiento de análisis de métricas</div>
-                <div class="item"><span class="tick">✅</span> +1 asesoría sobre resultados de los gráficos evaluados</div>
-                <div class="item"><span class="tick">✅</span> Acceso a estrategias avanzadas en tiempo real</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Diagnóstico</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Recomendaciones iniciales para la mejora de procesos</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> 1 sesión de capacitación de 90 minutos</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> 2 sesiones de seguimiento de análisis de métricas</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> +1 asesoría sobre resultados de los gráficos evaluados</div>
+                <div class="item"><svg class="tick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M9.3 16.3a1 1 0 01-1.4 0L4.3 12.7a1 1 0 111.4-1.4l3 3 8.3-8.3a1 1 0 011.4 1.4L9.3 16.3z"/>
+  </svg>
+  <div class="item-text">Diagnóstico</div>
+</div> Acceso a estrategias avanzadas en tiempo real</div>
               </div>
               <div class="plan-actions">
                 <button type="button" class="ghost-btn" onclick="openCalculatorFor('asesoria','vip')">Calcular</button>
@@ -132,7 +209,7 @@
             </article>
           </div>
 
-          <!-- Capacitaciones (solo descripción + botón calcular) -->
+          <!-- Capacitaciones -->
           <div class="card cap-card">
             <div>
               <h3>Capacitaciones</h3>
@@ -216,10 +293,10 @@
   <!-- Legal modal -->
   <div id="legalModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
-      <button class="close-btn" onclick="closeLegal()">✕</button>
+      <button class="close-btn" type="button" onclick="closeLegal()">✕</button>
       <h3 id="legalTitle">Política de Privacidad y Condiciones de Uso</h3>
 
-      <p><strong>ASOMARK – Asesorías de Marketing para Empresas y Empresarios a Nivel Nacional</strong></p>
+      <p><strong>ASOMARK – Asesorías de Marketing para Empresas y Empresarios en la Zona de Urabá</strong></p>
 
       <p>ASOMARK garantiza el respeto a la intimidad, la seguridad y la protección de los datos personales de los usuarios que utilicen este sitio web, conforme a la Ley 1581 de 2012, el Artículo 15 de la Constitución Política de Colombia, y demás normas que regulan el tratamiento de datos personales en el país.</p>
 
@@ -239,8 +316,8 @@
       <p>Esta política entra en vigencia desde su publicación y podrá ser actualizada para ajustarse a nuevas disposiciones legales.</p>
 
       <div class="modal-actions">
-        <button class="ghost-btn" onclick="closeLegal()">Cerrar</button>
-        <button class="primary-btn" onclick="acceptLegal()">Aceptar</button>
+        <button class="ghost-btn" type="button" onclick="closeLegal()">Cerrar</button>
+        <button class="primary-btn" id="acceptLegalBtn" type="button" onclick="acceptLegal()">Aceptar</button>
       </div>
     </div>
   </div>
@@ -248,7 +325,7 @@
   <!-- Calculator modal -->
   <div id="calcModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
-      <button class="close-btn" onclick="closeCalculator()">✕</button>
+      <button class="close-btn" type="button" onclick="closeCalculator()">✕</button>
       <h3 id="calcTitle">Calculadora de Servicios</h3>
       <p class="muted">Seleccione el tipo de servicio, plan (si aplica), tipo de actividad y número de trabajadores.</p>
 
@@ -282,8 +359,8 @@
         <input id="workersInput" type="number" min="1" value="1" />
 
         <div class="calc-actions">
-          <button class="ghost-btn" onclick="closeCalculator()">Cerrar</button>
-          <button class="primary-btn" onclick="calculate()">Calcular</button>
+          <button class="ghost-btn" type="button" onclick="closeCalculator()">Cerrar</button>
+          <button class="primary-btn" type="button" onclick="calculate()">Calcular</button>
         </div>
 
         <div id="calcResult" class="calc-result muted" aria-live="polite"></div>
@@ -294,10 +371,10 @@
   <!-- Login (simulado) -->
   <div id="loginModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true">
-      <button class="close-btn" onclick="closeLogin()">✕</button>
+      <button class="close-btn" type="button" onclick="closeLogin()">✕</button>
       <h3>Iniciar sesión (simulado)</h3>
       <p class="muted">Interfaz visual para demostración.</p>
-      <div style="text-align:right"><button class="ghost-btn" onclick="closeLogin()">Cerrar</button></div>
+      <div style="text-align:right"><button class="ghost-btn" type="button" onclick="closeLogin()">Cerrar</button></div>
     </div>
   </div>
 
