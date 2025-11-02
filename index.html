@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASOMARK · Transformamos ideas en resultados</title>
+  <meta name="description" content="ASOMARK — Asesorías de marketing y capacitaciones para empresas en Urabá (Apartadó)." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="ASOMARK app">
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="brand" title="ASOMARK">
+        <img id="logoTop" src="./logo-asomark.png" alt="Logo ASOMARK" />
+        <div class="brand-text">
+          <div class="brand-title">ASOMARK</div>
+          <div class="brand-sub">Asesorías de marketing — Urabá</div>
+        </div>
+      </div>
+
+      <nav class="nav-main" aria-label="Menú principal">
+        <button class="nav-btn" data-target="inicio">Inicio</button>
+        <button class="nav-btn" data-target="services">Servicios</button>
+        <button class="nav-btn" data-target="results">Resultados</button>
+      </nav>
+
+      <div class="header-actions">
+        <!-- icono minimalista (línea) que responde al color corporativo -->
+        <button id="themeToggle" class="icon-btn" title="Cambiar tema" aria-label="Cambiar tema">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+
+        <button id="loginBtn" class="ghost-btn" title="Iniciar sesión (simulado)">Iniciar sesión</button>
+      </div>
+    </header>
+
+    <!-- SCREENS -->
+    <main class="screens">
+      <!-- INICIO -->
+      <section id="inicio" class="screen active" aria-label="Inicio">
+        <div class="screen-inner">
+          <div class="hero">
+            <div class="hero-left">
+              <img class="logo-big" src="./logo-asomark.png" alt="Logo ASOMARK" />
+            </div>
+            <div class="hero-right">
+              <h1 class="site-title">ASOMARK</h1>
+              <h2 class="tagline">Transformamos ideas en resultados</h2>
+              <p class="lead">ASOMARK impulsa el crecimiento de las empresas urabaenses mediante asesorías de marketing diseñadas para optimizar estrategias, fortalecer la presencia digital y potenciar el desarrollo de negocios locales.</p>
+
+              <div class="hero-actions">
+                <button class="primary-btn" data-target="services">Ver servicios</button>
+                <button class="ghost-btn" id="btnContactFromHero">Contáctenos</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card who">
+            <h3>Quiénes somos</h3>
+            <p><strong>Somos una organización dedicada a brindar asesorías de marketing innovadoras para empresas y emprendedores en la región de Urabá.</strong> <strong>Trabajamos desde Apartadó</strong>, contribuyendo al fortalecimiento de las capacidades comerciales del territorio y a la creación de soluciones efectivas para los negocios del entorno.</p>
+            <p>Nuestro trabajo combina acompañamiento virtual y sesiones presenciales en Apartadó según la planificación del cliente. Buscamos soluciones prácticas y medibles para el crecimiento local.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="screen" aria-label="Servicios">
+        <div class="screen-inner">
+          <h2>Servicios</h2>
+          <p class="muted">Planes de asesoría en marketing y capacitaciones. Los precios no se muestran en las tarjetas; use la calculadora para obtener el valor.</p>
+
+          <!-- Planes de asesoría (alineadas horizontalmente) -->
+          <div class="plans-row" role="list">
+            <!-- Plan Básico -->
+            <article class="plan-card card" role="listitem" aria-labelledby="plan-basic">
+              <div class="plan-head">
+                <div id="plan-basic" class="plan-title">Plan Básico</div>
+                <div class="plan-sub muted">Diagnóstico, recomendaciones y capacitación inicial.</div>
+              </div>
+              <div class="checklist">
+                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
+                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
+                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
+                <div class="item"><span class="tick">❌</span> Seguimiento de análisis de métricas</div>
+                <div class="item"><span class="tick">❌</span> Estrategias avanzadas</div>
+                <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
+              </div>
+              <div class="plan-actions">
+                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','basic')">Calcular</button>
+              </div>
+            </article>
+
+            <!-- Plan Premium -->
+            <article class="plan-card card" role="listitem" aria-labelledby="plan-premium">
+              <div class="plan-head">
+                <div id="plan-premium" class="plan-title">Plan Premium</div>
+                <div class="plan-sub muted">Diagnóstico, métricas y estrategia avanzada.</div>
+              </div>
+              <div class="checklist">
+                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
+                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
+                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
+                <div class="item"><span class="tick">✅</span> 2 sesiones de seguimiento de análisis de métricas</div>
+                <div class="item"><span class="tick">✅</span> Creación de dos estrategias</div>
+                <div class="item"><span class="tick">❌</span> Asesoría sobre resultados de gráficos evaluados</div>
+              </div>
+              <div class="plan-actions">
+                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','premium')">Calcular</button>
+              </div>
+            </article>
+
+            <!-- Plan VIP -->
+            <article class="plan-card card" role="listitem" aria-labelledby="plan-vip">
+              <div class="plan-head">
+                <div id="plan-vip" class="plan-title">Plan VIP</div>
+                <div class="plan-sub muted">Acompañamiento intensivo y asesorías sobre métricas.</div>
+              </div>
+              <div class="checklist">
+                <div class="item"><span class="tick">✅</span> Diagnóstico</div>
+                <div class="item"><span class="tick">✅</span> Recomendaciones iniciales para la mejora de procesos</div>
+                <div class="item"><span class="tick">✅</span> 1 sesión de capacitación de 90 minutos</div>
+                <div class="item"><span class="tick">✅</span> 2 sesiones de seguimiento de análisis de métricas</div>
+                <div class="item"><span class="tick">✅</span> +1 asesoría sobre resultados de los gráficos evaluados</div>
+                <div class="item"><span class="tick">✅</span> Acceso a estrategias avanzadas en tiempo real</div>
+              </div>
+              <div class="plan-actions">
+                <button class="ghost-btn" onclick="openCalculatorFor('asesoria','vip')">Calcular</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Capacitaciones (solo descripción + botón calcular) -->
+          <div class="card cap-card">
+            <div>
+              <h3>Capacitaciones</h3>
+              <p class="muted">Ofrecemos capacitaciones con tarifas por trabajador. Use la calculadora para obtener el precio según el número de participantes.</p>
+            </div>
+            <div class="cap-actions">
+              <button class="ghost-btn" onclick="openCalculatorFor('capacitacion')">Calcular</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="results" class="screen" aria-label="Resultados">
+        <div class="screen-inner">
+          <h2>Resultados e Impacto</h2>
+          <p class="muted">Datos obtenidos en la fase de validación del proyecto</p>
+
+          <div class="stats-row">
+            <div class="stat card">
+              <div class="stat-value">78,3%</div>
+              <div class="stat-label muted">Empresas dispuestas a acceder a nuestros servicios</div>
+            </div>
+
+            <div class="stat card">
+              <div class="stat-value">115</div>
+              <div class="stat-label muted">Empresas encuestadas en la región de Urabá</div>
+            </div>
+
+            <div class="stat card">
+              <div class="stat-value">1</div>
+              <div class="stat-label muted">Presentación en feria de emprendimiento escolar</div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <img src="./feria-asomark.jpg" alt="Feria ASOMARK" class="result-img" />
+            <p class="muted">Primera presentación de ASOMARK durante la feria de emprendimiento escolar, donde dimos a conocer nuestro proyecto y recibimos valiosa retroalimentación.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="screen" aria-label="Contacto">
+        <div class="screen-inner">
+          <h2>Contáctenos</h2>
+          <p class="muted">Complete el formulario y le responderemos a la brevedad.</p>
+
+          <form id="contactForm" class="contact-form" onsubmit="handleContact(event)">
+            <input id="contactName" type="text" placeholder="Tu nombre" required />
+            <input id="contactEmail" type="email" placeholder="tu@email.com" required />
+            <textarea id="contactMsg" placeholder="Cuéntanos cómo podemos ayudarte..." rows="6" required></textarea>
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Enviar mensaje</button>
+              <button type="button" class="ghost-btn" onclick="document.getElementById('contactForm').reset()">Limpiar</button>
+            </div>
+          </form>
+
+          <div class="card contact-info">
+            <h4>Información de contacto</h4>
+            <p><strong>Email:</strong> <a href="mailto:contacto@asomark.com">contacto@asomark.com</a></p>
+            <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+            <p><strong>Ubicación:</strong> Apartadó, Colombia</p>
+            <h5>Horario de atención</h5>
+            <p>Lunes - Viernes: 8:00 AM - 4:30 PM</p>
+            <p>Sábados: Sin servicio</p>
+            <p>Domingos: 9:00 AM - 3:30 PM</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div>ASOMARK · Transformamos ideas en resultados</div>
+      <div class="footer-legal">© 2025 ASOMARK · <a href="#" onclick="openLegal(event)">Política y Condiciones</a></div>
+    </footer>
+  </div>
+
+  <!-- MODALS -->
+  <!-- Legal modal -->
+  <div id="legalModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+      <button class="close-btn" onclick="closeLegal()">✕</button>
+      <h3 id="legalTitle">Política de Privacidad y Condiciones de Uso</h3>
+
+      <p><strong>ASOMARK – Asesorías de Marketing para Empresas y Empresarios a Nivel Nacional</strong></p>
+
+      <p>ASOMARK garantiza el respeto a la intimidad, la seguridad y la protección de los datos personales de los usuarios que utilicen este sitio web, conforme a la Ley 1581 de 2012, el Artículo 15 de la Constitución Política de Colombia, y demás normas que regulan el tratamiento de datos personales en el país.</p>
+
+      <h4>1. Recolección y uso de la información</h4>
+      <p>Los datos personales solicitados (nombre completo, correo electrónico y cantidad de empleados) se recopilan con el único propósito de ofrecer asesorías personalizadas en marketing, responder solicitudes y mantener comunicación con los usuarios interesados en los servicios de ASOMARK.</p>
+
+      <h4>2. Derechos de los usuarios</h4>
+      <p>Conforme a la Ley 1581 de 2012, los usuarios tienen derecho a conocer, actualizar, rectificar o eliminar sus datos personales en cualquier momento.</p>
+
+      <h4>3. Seguridad y confidencialidad</h4>
+      <p>ASOMARK se compromete a proteger la información proporcionada por los usuarios y a evitar su acceso, uso o divulgación no autorizada.</p>
+
+      <h4>4. Información veraz y responsabilidad</h4>
+      <p>ASOMARK vela por ofrecer contenidos y asesorías basadas en información verídica.</p>
+
+      <h4>5. Vigencia y modificaciones</h4>
+      <p>Esta política entra en vigencia desde su publicación y podrá ser actualizada para ajustarse a nuevas disposiciones legales.</p>
+
+      <div class="modal-actions">
+        <button class="ghost-btn" onclick="closeLegal()">Cerrar</button>
+        <button class="primary-btn" onclick="acceptLegal()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator modal -->
+  <div id="calcModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
+      <button class="close-btn" onclick="closeCalculator()">✕</button>
+      <h3 id="calcTitle">Calculadora de Servicios</h3>
+      <p class="muted">Seleccione el tipo de servicio, plan (si aplica), tipo de actividad y número de trabajadores.</p>
+
+      <div class="calc-grid">
+        <label>Tipo de servicio</label>
+        <select id="serviceType">
+          <option value="asesoria">Asesorías</option>
+          <option value="capacitacion">Capacitaciones</option>
+        </select>
+
+        <div id="planBlock">
+          <label>Plan</label>
+          <select id="planSelect">
+            <option value="basic">Plan Básico</option>
+            <option value="premium">Plan Premium</option>
+            <option value="vip">Plan VIP</option>
+          </select>
+        </div>
+
+        <label>Tipo de actividad <small class="muted">(informativo)</small></label>
+        <select id="activityType">
+          <option>Comercio minorista</option>
+          <option>Productor</option>
+          <option>Servicios profesionales</option>
+          <option>Educación/Formación</option>
+          <option>Tecnología/Digital</option>
+          <option>Otros</option>
+        </select>
+
+        <label>Número de trabajadores</label>
+        <input id="workersInput" type="number" min="1" value="1" />
+
+        <div class="calc-actions">
+          <button class="ghost-btn" onclick="closeCalculator()">Cerrar</button>
+          <button class="primary-btn" onclick="calculate()">Calcular</button>
+        </div>
+
+        <div id="calcResult" class="calc-result muted" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login (simulado) -->
+  <div id="loginModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="close-btn" onclick="closeLogin()">✕</button>
+      <h3>Iniciar sesión (simulado)</h3>
+      <p class="muted">Interfaz visual para demostración.</p>
+      <div style="text-align:right"><button class="ghost-btn" onclick="closeLogin()">Cerrar</button></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
