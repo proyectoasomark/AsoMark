@@ -7,14 +7,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
   function updateThemeIcon(){
     const icon = document.getElementById('themeIcon');
     const isLight = document.body.classList.contains('light-theme');
-    // proteger si themeToggle no existe
     if(themeToggle){
       themeToggle.title = isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
       themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
     }
-    // (opcional) actualizar el color o atributo del icono si hace falta
     if(icon) {
-      // ejemplo: cambiar stroke por clase (si necesitas)
+      // no-op for now
     }
   }
 
@@ -40,13 +38,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const el = document.getElementById(id);
     if(el) el.classList.add('active');
-    // scroll top
     try { el.scrollTop = 0 } catch(e){}
   }
   document.querySelectorAll('.nav-btn').forEach(btn=>{
     btn.addEventListener('click', ()=> showScreen(btn.dataset.target));
   });
-  // hero buttons
   document.querySelectorAll('.hero-actions [data-target]').forEach(b=>{
     b.addEventListener('click', ()=> showScreen(b.dataset.target));
   });
@@ -59,10 +55,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const loginModal = document.getElementById('loginModal');
 
   function openModal(modal){
+    if(!modal) return;
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden','false');
   }
   function closeModal(modal){
+    if(!modal) return;
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden','true');
   }
@@ -74,6 +72,20 @@ document.addEventListener('DOMContentLoaded', ()=> {
     closeModal(legalModal);
   };
 
+  // bind accept button if present (extra safety)
+  const acceptLegalBtn = document.getElementById('acceptLegalBtn');
+  if(acceptLegalBtn){
+    acceptLegalBtn.addEventListener('click', ()=> {
+      try {
+        window.acceptLegal && window.acceptLegal();
+      } catch(err){
+        console.error('acceptLegal error:', err);
+        // fallback safe close
+        if(legalModal){ legalModal.style.display='none'; legalModal.setAttribute('aria-hidden','true'); }
+      }
+    });
+  }
+
   // show legal on first visit
   if(!localStorage.getItem('asomark_legal_accepted')){
     setTimeout(()=> openModal(legalModal), 450);
@@ -83,14 +95,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
   window.openCalculatorFor = function(serviceType, planKey){
     const st = document.getElementById('serviceType');
     const ps = document.getElementById('planSelect');
-    st.value = (serviceType === 'capacitacion') ? 'capacitacion' : 'asesoria';
-    if(planKey) ps.value = planKey;
+    if(st) st.value = (serviceType === 'capacitacion') ? 'capacitacion' : 'asesoria';
+    if(planKey && ps) ps.value = planKey;
     updatePlanVisibility();
-    document.getElementById('calcResult').innerHTML = '';
+    const cr = document.getElementById('calcResult');
+    if(cr) cr.innerHTML = '';
     openModal(calcModal);
     setTimeout(()=> { try { document.getElementById('workersInput').focus(); } catch(e){} }, 120);
   };
-  window.closeCalculator = function(){ closeModal(calcModal); document.getElementById('calcResult').innerHTML = ''; };
+  window.closeCalculator = function(){ closeModal(calcModal); const cr = document.getElementById('calcResult'); if(cr) cr.innerHTML=''; };
 
   // login modal
   const loginBtn = document.getElementById('loginBtn');
@@ -148,7 +161,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const plan = plansData[planKey];
     let range = plan.ranges.find(r => trabajadores >= r.min && trabajadores <= r.max);
     if(range) return range.price;
-    // más de 8
     const top = plan.ranges.find(r => r.max === 8);
     return top.price + (trabajadores - 8) * plan.extraPerEmployee;
   }
@@ -157,30 +169,53 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const serviceTypeEl = document.getElementById('serviceType');
   if(serviceTypeEl) serviceTypeEl.addEventListener('change', updatePlanVisibility);
   function updatePlanVisibility(){
-    const v = document.getElementById('serviceType').value;
-    document.getElementById('planBlock').style.display = (v === 'asesoria') ? 'block' : 'none';
+    const vEl = document.getElementById('serviceType');
+    const planBlock = document.getElementById('planBlock');
+    const v = vEl ? vEl.value : 'asesoria';
+    if(planBlock) planBlock.style.display = (v === 'asesoria') ? 'block' : 'none';
   }
   updatePlanVisibility();
 
-  // calculate action
+  // calculate action (robusta)
   window.calculate = function(){
-    const service = document.getElementById('serviceType').value;
-    const plan = document.getElementById('planSelect').value;
-    const activity = document.getElementById('activityType').value;
-    let workers = parseInt(document.getElementById('workersInput').value) || 1;
-    if(workers < 1) workers = 1;
-    let total = 0;
-    if(service === 'capacitacion') total = computeCapacitacion(workers);
-    else total = computeAsesoria(plan, workers);
+    try {
+      const calcResultEl = document.getElementById('calcResult');
+      if(!calcResultEl) return console.warn('Elemento calcResult no encontrado');
 
-    const formatted = total.toLocaleString('es-CO', {style:'currency',currency:'COP',maximumFractionDigits:0});
-    let html = `<div><strong>Tipo de servicio:</strong> ${service === 'capacitacion' ? 'Capacitación' : 'Asesorías'}</div>`;
-    if(service === 'asesoria') html += `<div><strong>Plan seleccionado:</strong> ${plan === 'basic' ? 'Básico' : plan === 'premium' ? 'Premium' : 'VIP'}</div>`;
-    html += `<div><strong>Tipo de actividad:</strong> ${activity}</div>`;
-    html += `<div><strong>Número de trabajadores:</strong> ${workers}</div>`;
-    html += `<div style="margin-top:8px"><strong>Total a pagar:</strong> ${formatted}</div>`;
-    html += `<div class="muted" style="margin-top:6px;font-size:13px">Sin cuotas, sin intereses, sin valor base.</div>`;
-    document.getElementById('calcResult').innerHTML = html;
+      const serviceEl = document.getElementById('serviceType');
+      const planEl = document.getElementById('planSelect');
+      const activityEl = document.getElementById('activityType');
+      const workersEl = document.getElementById('workersInput');
+
+      if(!serviceEl || !planEl || !activityEl || !workersEl){
+        calcResultEl.innerHTML = '<div class="muted">Faltan elementos del formulario (service/plan/activity/workers).</div>';
+        return;
+      }
+
+      const service = serviceEl.value;
+      const plan = planEl.value;
+      const activity = activityEl.value;
+      let workers = parseInt(workersEl.value, 10) || 1;
+      if(workers < 1) workers = 1;
+      let total = 0;
+
+      if(service === 'capacitacion') total = computeCapacitacion(workers);
+      else total = computeAsesoria(plan, workers);
+
+      const formatted = total.toLocaleString('es-CO', {style:'currency',currency:'COP',maximumFractionDigits:0});
+      let html = `<div><strong>Tipo de servicio:</strong> ${service === 'capacitacion' ? 'Capacitación' : 'Asesorías'}</div>`;
+      if(service === 'asesoria') html += `<div><strong>Plan seleccionado:</strong> ${plan === 'basic' ? 'Básico' : plan === 'premium' ? 'Premium' : 'VIP'}</div>`;
+      html += `<div><strong>Tipo de actividad:</strong> ${activity}</div>`;
+      html += `<div><strong>Número de trabajadores:</strong> ${workers}</div>`;
+      html += `<div style="margin-top:8px"><strong>Total a pagar:</strong> ${formatted}</div>`;
+      html += `<div class="muted" style="margin-top:6px;font-size:13px">Sin cuotas, sin intereses, sin valor base.</div>`;
+
+      calcResultEl.innerHTML = html;
+    } catch (err) {
+      console.error('Error en calculate():', err);
+      const calcResultEl = document.getElementById('calcResult');
+      if(calcResultEl) calcResultEl.innerHTML = `<div class="muted">Ocurrió un error al calcular. Revisa la consola para más detalles.</div>`;
+    }
   };
 
   /* CONTACT (demo) */
